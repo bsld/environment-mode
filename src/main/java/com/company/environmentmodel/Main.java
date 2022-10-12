@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,10 +23,25 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         Scene scene = new Scene(root);
 
-        String className = this.getClass().getSimpleName();
-        System.out.println(className);
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            System.out.println(event.getCode());
+            switch (event.getCode()) {
+                    case UP:
+                        break;
+                    case RIGHT:
+                        break;
+                    case DOWN:
+                        break;
+                    case LEFT:
+                        break;
+                    default:
+                        break;
+                }
+                ;
+        });
 
         primaryStage.setTitle("Environment Model");
         primaryStage.getIcons().clear();

@@ -8,12 +8,14 @@ import com.company.environmentmodel.environment.Environment;
 import com.company.environmentmodel.environment.member.EnvironmentMember;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -70,7 +72,10 @@ public class MainWindowController {
         canvasContainer.setPrefSize(environmentSize * cellSize, environmentSize * cellSize);
 
         canvasContainer.setOnMouseClicked(event -> {
-            System.out.printf("X: %f, Y: %f\n", event.getX(), event.getY());
+            int x = (int)event.getX() / cellSize;
+            int y = (int)event.getY() / cellSize;
+
+            System.out.printf("X: %d, Y: %d\n", x, y);
         });
 
         btnRedraw.setOnAction(event -> {
@@ -97,8 +102,8 @@ public class MainWindowController {
             try {
                 newSize = Integer.parseInt(tfEnvironmentSize.getText());
             } catch (NumberFormatException e) {
-                System.out.println("unable to parse string, setting the default value");
-                newSize = 200;
+                // unable to parse string, setting the default value
+                newSize = 30;
             }
             environmentSize = newSize;
 
@@ -134,7 +139,7 @@ public class MainWindowController {
 
                     EnvironmentMember m = c.getMember();
                     // if (m == null) continue;
-                    
+
                     Image image = null;
                     try {
                         String filename = String.format("src/main/resources/com/company/environmentmodel/images/%s.png",
