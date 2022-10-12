@@ -2,10 +2,9 @@ package com.company.environmentmodel.environment.member.animals;
 
 public class Camel extends Herbivore {
 
-    
-    @Override
-    public String getName() {
-        return "Camel";
+    public Camel() {
+        super();
+        this.name = "Camel";
     }
 
     @Override

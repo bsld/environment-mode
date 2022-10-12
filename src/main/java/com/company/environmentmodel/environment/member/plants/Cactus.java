@@ -2,14 +2,11 @@ package com.company.environmentmodel.environment.member.plants;
 
 import com.company.environmentmodel.environment.member.Eatable;
 
-
 public class Cactus extends Plant implements Eatable {
 
-   
-    
-    @Override
-    public String getName() {
-        return "Cactus";
+    public Cactus() {
+        super();
+        this.name = "Cactus";
     }
 
     @Override
