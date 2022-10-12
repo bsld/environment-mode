@@ -51,6 +51,7 @@ public class Environment {
     }
 
     public void reset() {
+        this.occupiedPoints = 0;
         this.cells = new Cell[width][height];
     }
 
@@ -92,7 +93,8 @@ public class Environment {
             m = new Cactus();
         } else if (c <= 1) {
             m = new Camel();
-        };
+        }
+        ;
 
         return this.addMember(m);
     }
