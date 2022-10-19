@@ -6,15 +6,16 @@ import java.io.FileNotFoundException;
 import com.company.environmentmodel.environment.Cell;
 import com.company.environmentmodel.environment.Environment;
 import com.company.environmentmodel.environment.member.EnvironmentMember;
+import com.company.environmentmodel.environment.member.animals.Animal;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 public class MainWindowController {
     private Environment environment;
@@ -25,25 +26,24 @@ public class MainWindowController {
     private TextField tfEnvironmentSize;
     @FXML
     private Button btnEnvironmentSize;
-
     @FXML
     private TextField tfCellSize;
     @FXML
     private Button btnCellSize;
-
     @FXML
     private Button btnAdd;
     @FXML
     private Button btnClear;
     @FXML
     private Button btnRedraw;
-
+    @FXML
+    private Button btnSimulationControl;
     @FXML
     private AnchorPane canvasContainer;
-    private ResizableCanvas canvas;
-
     @FXML
-    private VBox propertiesContainer;
+    private CheckBox cbDrawOrientation;
+
+    private ResizableCanvas canvas;
 
     public MainWindowController() {
         this.canvas = new ResizableCanvas();
@@ -67,13 +67,21 @@ public class MainWindowController {
         canvasContainer.setPrefSize(environmentSize * cellSize, environmentSize * cellSize);
 
         canvasContainer.setOnMouseClicked(event -> {
-            int x = (int)event.getX() / cellSize;
-            int y = (int)event.getY() / cellSize;
+            int x = (int) event.getX() / cellSize;
+            int y = (int) event.getY() / cellSize;
 
             System.out.printf("X: %d, Y: %d\n", x, y);
         });
 
+        btnSimulationControl.setOnAction(event -> {
+            
+        });
+
         btnRedraw.setOnAction(event -> {
+            drawEnvironment(canvas);
+        });
+
+        cbDrawOrientation.setOnAction(event -> {
             drawEnvironment(canvas);
         });
 
@@ -135,24 +143,42 @@ public class MainWindowController {
                     EnvironmentMember m = c.getMember();
                     // if (m == null) continue;
 
-                    Image image = null;
-                    try {
-                        String filename = String.format("src/main/resources/com/company/environmentmodel/images/%s.png",
-                                m.getName());
-                        FileInputStream input = new FileInputStream(filename);
-                        image = new Image(input);
-                    } catch (FileNotFoundException e1) {
-                        try {
-                            FileInputStream input = new FileInputStream(
-                                    "src/main/resources/com/company/environmentmodel/images/Unknown.png");
-                            image = new Image(input);
-                        } catch (Exception e) {
-                        }
-                    }
+                    String filename = String.format("src/main/resources/com/company/environmentmodel/images/%s.png",
+                            m.getName());
 
-                    gc.drawImage(image, x, y, cellSize, cellSize);
+                    DrawingUtility.drawImage(gc, filename, x, y, cellSize, cellSize);
+
+                    // TODO try visitor pattern
+                    if (cbDrawOrientation.isSelected() && (m instanceof Animal)) {
+                        filename = String.format(
+                                "src/main/resources/com/company/environmentmodel/images/Direction%s.png",
+                                ((Animal) m).getOrientation().name());
+
+                        gc.setGlobalAlpha(0.8);
+                        DrawingUtility.drawImage(gc, filename, x, y, cellSize, cellSize);
+                        gc.setGlobalAlpha(1.0);
+                    }
                 }
             }
         }
+    }
+}
+
+class DrawingUtility {
+    public static void drawImage(GraphicsContext gc, String filename, double x, double y, double w, double h) {
+        Image image = null;
+        try {
+            FileInputStream input = new FileInputStream(filename);
+            image = new Image(input);
+        } catch (FileNotFoundException e1) {
+            try {
+                FileInputStream input = new FileInputStream(
+                        "src/main/resources/com/company/environmentmodel/images/Unknown.png");
+                image = new Image(input);
+            } catch (Exception e) {
+            }
+        }
+
+        gc.drawImage(image, x, y, w, h);
     }
 }
