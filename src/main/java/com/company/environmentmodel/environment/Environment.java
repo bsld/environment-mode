@@ -121,21 +121,6 @@ public class Environment {
     public boolean move(int i, int j, Direction dir) {
         return false;
     }
-
-    public void print() {
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[i].length; j++) {
-                if (this.cells[i][j] == null) {
-                    System.out.print('_');
-                } else {
-                    char c = this.cells[i][j].getMember().getName().charAt(0);
-                    System.out.print(c);
-                }
-                System.out.print(' ');
-            }
-            System.out.println();
-        }
-    }
 }
 
 class Tuple {
