@@ -2,6 +2,7 @@ package com.company.environmentmodel;
 
 import com.company.environmentmodel.environment.Environment;
 
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -12,9 +13,11 @@ public class MainWindowController {
     private Environment environment;
     private int environmentSize;
     private int cellSize;
-    
+    private boolean running = false;
+
     private DisplayUtility displayUtility;
-    
+    private AnimationTimer timer;
+
     @FXML
     private TextField tfEnvironmentSize;
     @FXML
@@ -47,17 +50,38 @@ public class MainWindowController {
         tfEnvironmentSize.setText(String.valueOf(environmentSize));
         tfCellSize.setText(String.valueOf(cellSize));
 
+        this.timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                environment.update();
+            }
+        };
+
         btnSimulationControl.setOnAction(event -> {
+            this.running = !this.running;
             
+            if (this.running) {
+                this.timer.start();
+            } else {
+                this.timer.stop();
+            }
+            
+            this.tfEnvironmentSize.setDisable(this.running);
+            this.btnEnvironmentSize.setDisable(this.running);
+            this.tfCellSize.setDisable(this.running);
+            this.btnCellSize.setDisable(this.running);
+            this.btnAdd.setDisable(this.running);
+            this.btnClear.setDisable(this.running);
+            this.btnRedraw.setDisable(this.running);
+            this.cbDrawOrientation.setDisable(this.running);
         });
 
         btnRedraw.setOnAction(event -> {
-            displayUtility.updateView();
+            // displayUtility.updateViews();
         });
 
         cbDrawOrientation.setOnAction(event -> {
             displayUtility.setDrawOrientation(cbDrawOrientation.isSelected());
-            displayUtility.updateView();
         });
 
         btnCellSize.setOnAction(event -> {
@@ -77,7 +101,7 @@ public class MainWindowController {
             try {
                 newSize = Integer.parseInt(tfEnvironmentSize.getText());
             } catch (NumberFormatException e) {
-                // unable to parse string, setting the default value
+                System.out.println("unable to parse string, setting the default value");
                 newSize = 30;
             }
             environmentSize = newSize;
@@ -87,14 +111,12 @@ public class MainWindowController {
 
         btnAdd.setOnAction(event -> {
             environment.addRandomMembers(10);
-            displayUtility.updateView();
         });
 
         btnClear.setOnAction(event -> {
             environment.reset();
-            displayUtility.updateView();
         });
-        
+
         this.displayUtility = new DisplayUtility(environment, container, cellSize);
     }
 }
