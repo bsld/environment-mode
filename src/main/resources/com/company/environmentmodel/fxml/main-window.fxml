@@ -40,6 +40,7 @@
       layoutY="79.0"
       prefHeight="200.0"
       prefWidth="753.0"
+      style="-fx-background-radius: 3;"
       AnchorPane.bottomAnchor="9.0"
       AnchorPane.leftAnchor="9.0"
       AnchorPane.rightAnchor="9.0"

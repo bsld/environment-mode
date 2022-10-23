@@ -10,25 +10,25 @@ import com.company.environmentmodel.environment.member.animals.Wolf;
 import com.company.environmentmodel.environment.member.plants.Cactus;
 import com.company.environmentmodel.environment.member.plants.Carrot;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Environment {
     private int width, height;
     // private int occupiedCells;
     private int totalCells;
     private ArrayList<Tuple> unoccupiedCells;
-    // private ArrayList<EnvironmentMember> members;
-
-    private Cell[][] cells;
+    private ObservableList<EnvironmentMember> members;
 
     public Environment(int width, int height) {
         this.setSize(width, height);
-        // this.members = new ArrayList<>(memberCount);
+        this.members = FXCollections.observableArrayList();
     }
 
     public void setSize(int width, int height) {
         this.width = width;
         this.height = height;
         this.totalCells = width * height;
-        this.cells = new Cell[width][height];
 
         this.unoccupiedCells = new ArrayList<>(this.totalCells);
         for (int i = 0; i < width; i++) {
@@ -53,11 +53,18 @@ public class Environment {
     public int getTotalCells() {
         return totalCells;
     }
-
-    public Cell getCell(int i, int j) {
-        return cells[i][j];
+    
+    public void update() {
+        // we will call this method in a loop/thread to update our environment (to move members and stuff)
+        for (EnvironmentMember m : this.members) {
+            m.update();
+        }
     }
-
+    
+    public ObservableList<EnvironmentMember> getMembers() {
+        return members;
+    }
+    
     public void reset() {
         this.unoccupiedCells = new ArrayList<>(this.totalCells);
         for (int i = 0; i < width; i++) {
@@ -65,8 +72,11 @@ public class Environment {
                 this.unoccupiedCells.add(new Tuple(i, j));
             }
         }
+
+        this.members.clear();
         
-        this.cells = new Cell[width][height];
+        // this.members.remove(12);
+        // this.members.remove(10, 19);
     }
 
     public boolean addMember(EnvironmentMember member) {
@@ -74,16 +84,11 @@ public class Environment {
             return false;
         }
 
-        while (true) {
-            int n = ThreadLocalRandom.current().nextInt(0, unoccupiedCells.size());
-            Tuple t = unoccupiedCells.get(n);
+        int n = ThreadLocalRandom.current().nextInt(0, unoccupiedCells.size());
 
-            if (this.cells[t.x][t.y] == null) {
-                this.cells[t.x][t.y] = new Cell(t.x, t.y, member);
-                unoccupiedCells.remove(n);
-                break;
-            }
-        }
+        member.setPosition(unoccupiedCells.get(n));
+        members.add(member);
+        unoccupiedCells.remove(n);
 
         return true;
     }
@@ -116,9 +121,5 @@ public class Environment {
         }
 
         return true;
-    }
-
-    public boolean move(int i, int j, Direction dir) {
-        return false;
     }
 }
