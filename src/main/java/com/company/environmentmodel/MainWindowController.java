@@ -3,9 +3,13 @@ package com.company.environmentmodel;
 import com.company.environmentmodel.environment.Environment;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
@@ -13,7 +17,10 @@ public class MainWindowController {
     private Environment environment;
     private int environmentSize;
     private int cellSize;
+
     private boolean running = false;
+    private long lastUpdate = 0;
+    private long frames = 0;
 
     private DisplayUtility displayUtility;
     private AnimationTimer timer;
@@ -39,6 +46,11 @@ public class MainWindowController {
     @FXML
     private CheckBox cbDrawOrientation;
 
+    @FXML
+    private Slider sldAnimationSpeed;
+    @FXML
+    private Label lblFrames;
+
     public MainWindowController() {
         this.environmentSize = 30;
         this.cellSize = 30;
@@ -49,23 +61,42 @@ public class MainWindowController {
     public void initialize() {
         tfEnvironmentSize.setText(String.valueOf(environmentSize));
         tfCellSize.setText(String.valueOf(cellSize));
+        lastUpdate = System.nanoTime();
+        sldAnimationSpeed.setValue(1);
+
+        // sldAnimationSpeed.valueProperty().addListener(new ChangeListener<Number>() {
+
+        //     @Override
+        //     public void changed(
+        //             ObservableValue<? extends Number> observableValue,
+        //             Number oldValue,
+        //             Number newValue) {
+        //             System.out.println(newValue);
+        //     }
+        // });
 
         this.timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                environment.update();
+                double elapsedSeconds = (now - lastUpdate) / 1_000_000_000.0; // one second in nanos
+
+                if (elapsedSeconds >= (1.0 / sldAnimationSpeed.getValue())) {
+                    lastUpdate = now;
+                    environment.update();
+                    lblFrames.setText(Long.toString(++frames));
+                }
             }
         };
 
         btnSimulationControl.setOnAction(event -> {
             this.running = !this.running;
-            
+
             if (this.running) {
                 this.timer.start();
             } else {
                 this.timer.stop();
             }
-            
+
             this.tfEnvironmentSize.setDisable(this.running);
             this.btnEnvironmentSize.setDisable(this.running);
             this.tfCellSize.setDisable(this.running);
