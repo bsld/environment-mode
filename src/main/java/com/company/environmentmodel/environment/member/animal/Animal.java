@@ -7,6 +7,7 @@ import com.company.environmentmodel.environment.member.Eatable;
 import com.company.environmentmodel.environment.member.EnvironmentMember;
 import com.company.environmentmodel.environment.member.animal.brain.Brain;
 import com.company.environmentmodel.environment.member.animal.brain.Input;
+import com.company.environmentmodel.environment.member.animal.brain.Output;
 
 public abstract class Animal extends EnvironmentMember implements Eatable {
     protected Brain brain;
@@ -18,7 +19,6 @@ public abstract class Animal extends EnvironmentMember implements Eatable {
         super(environment);
         this.energy = 100;
         this.orientation = Direction.random();
-        // this.brain = new Brain();
     }
 
     public void setOrientation(Direction orientation) {
@@ -32,12 +32,15 @@ public abstract class Animal extends EnvironmentMember implements Eatable {
     @Override
     public void update() {
         super.update();
-        
+
         this.collectSensoryData();
-        
-        switch (this.brain.ponder(this.recent)) {
+
+        Output o = this.brain.ponder(this.recent);
+        System.out.println(o);
+
+        switch (o) {
             case MOVE:
-                this.move();;
+                this.move();
                 break;
             case EAT:
                 this.eat();
@@ -79,15 +82,15 @@ public abstract class Animal extends EnvironmentMember implements Eatable {
 
         position = position.addMod(t, environment.getWidth(), environment.getHeight());
     }
-    
+
     public void eat() {
-        
+
     }
-    
+
     public void turnLeft() {
         orientation = orientation.rotateCounterclockwise();
     }
-    
+
     public void turnRight() {
         orientation = orientation.rotateClockwise();
     }

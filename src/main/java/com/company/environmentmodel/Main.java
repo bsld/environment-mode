@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.company.environmentmodel.neuro.ActivationFunction;
 import com.company.environmentmodel.neuro.MlDataSet;

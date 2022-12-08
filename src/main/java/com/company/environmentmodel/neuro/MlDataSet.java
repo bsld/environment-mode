@@ -26,7 +26,7 @@ public class MlDataSet {
         }
     }
     
-    public MlDataSet(ArrayList<Input> inputs, ArrayList<Output> targets) {
+    public MlDataSet(List<Input> inputs, List<Output> targets) {
         this.data = new ArrayList<>();
         this.inputs = new double[inputs.size()][];
         this.targets = new double[targets.size()][];

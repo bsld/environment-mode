@@ -1,8 +1,6 @@
 package com.company.environmentmodel;
 
-import com.company.environmentmodel.environment.Direction;
 import com.company.environmentmodel.environment.Environment;
-import com.company.environmentmodel.environment.Tuple;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
@@ -52,8 +50,8 @@ public class MainWindowController {
     private Label lblFrames;
 
     public MainWindowController() {
-        this.environmentSize = 30;
-        this.cellSize = 30;
+        this.environmentSize = 20;
+        this.cellSize = 20;
         this.environment = new Environment(environmentSize, environmentSize);
     }
 
@@ -83,6 +81,7 @@ public class MainWindowController {
                 if (elapsedSeconds >= (1.0 / sldAnimationSpeed.getValue())) {
                     lastUpdate = now;
                     environment.update();
+                    displayUtility.updateViews();
                     lblFrames.setText(Long.toString(++frames));
                 }
             }
@@ -141,9 +140,9 @@ public class MainWindowController {
         });
 
         btnAdd.setOnAction(event -> {
-            // environment.addRandomMembers(10);
-            environment.addTestLayout(new Tuple(0, 0), Direction.NORTH);
-            environment.addTestLayout(new Tuple(7, 7), Direction.NORTH);
+            environment.addRandomMembers(10);
+            // environment.addTestLayout(new Tuple(0, 0), Direction.NORTH);
+            // environment.addTestLayout(new Tuple(7, 7), Direction.NORTH);
             // environment.addTestLayout(new Tuple(13, 7), Direction.EAST);
             // environment.addTestLayout(new Tuple(7, 13), Direction.WEST);
             // environment.addTestLayout(new Tuple(13, 13), Direction.SOUTH);

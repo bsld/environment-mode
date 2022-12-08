@@ -60,10 +60,10 @@ public class Environment {
         // we will call this method in a loop/thread to update our environment (to move
         // members and stuff)
         for (EnvironmentMember m : this.members) {
-            // m.update();
-            if (m instanceof Rabbit) {
-                m.update();
-            }
+            m.update();
+            // if (m instanceof Rabbit) {
+            //     m.update();
+            // }
         }
     }
 

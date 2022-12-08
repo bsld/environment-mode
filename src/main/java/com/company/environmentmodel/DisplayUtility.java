@@ -59,17 +59,20 @@ public class DisplayUtility {
 
                 List<MemberView> subList = this.views.subList(change.getFrom(),
                         change.getFrom() + change.getRemovedSize());
-                
+
                 for (MemberView v : subList) {
                     v.removeFromParent();
                 }
-                
+
                 subList.clear();
             }
         });
     }
 
     public void updateViews() {
+        for (MemberView v : views) {
+            v.update();
+        }
     }
 
     public Environment getEnvironment() {
@@ -115,9 +118,10 @@ public class DisplayUtility {
 }
 
 class MemberView extends StackPane {
-    Pane parent; // container in the main window (the 'container' field in the `DisplayUtility` class)
+    Pane parent; // container in the main window (the 'container' field in the `DisplayUtility`
+                 // class)
     EnvironmentMember member;
-    ImageView[] views;
+    ImageView[] views; // 0 - the main picture, 1 - post mortem decoration, 2 - orientation
     int size;
     boolean drawOrientation;
 
@@ -127,15 +131,15 @@ class MemberView extends StackPane {
         this.member = member;
         this.size = size;
         this.drawOrientation = drawOrientation;
-        this.views = new ImageView[3]; // 0 - the main picture, 1 - post mortem decoration, 2 - orientation
-        
+        this.views = new ImageView[3];
+
         this.setPrefSize(size, size);
 
         this.parent.getChildren().add(this);
 
         int x = member.getPosition().x * size;
         int y = member.getPosition().y * size;
-    
+
         this.setLayoutX(x - this.getLayoutBounds().getMinX());
         this.setLayoutY(y - this.getLayoutBounds().getMinY());
 
@@ -168,7 +172,17 @@ class MemberView extends StackPane {
         this.updateOrientation();
     }
 
+    public void update() {
+        updatePosition();
+        updateOrientation();
+    }
+
     public void updatePosition() {
+        int x = member.getPosition().x * size;
+        int y = member.getPosition().y * size;
+
+        this.setLayoutX(x - this.getLayoutBounds().getMinX());
+        this.setLayoutY(y - this.getLayoutBounds().getMinY());
     }
 
     public void removeFromParent() {
@@ -181,7 +195,7 @@ class MemberView extends StackPane {
     }
 
     private void updateOrientation() {
-        this.updatePostMortemEffect();
+        // this.updatePostMortemEffect();
         // TODO try visitor pattern
         if (drawOrientation && (this.member instanceof Animal)) {
             String filename = String.format(
@@ -195,15 +209,16 @@ class MemberView extends StackPane {
             } catch (FileNotFoundException e) {
             }
 
-            ImageView iv = new ImageView();
-            iv.setImage(image);
-            iv.setFitWidth(size);
-            iv.setPreserveRatio(true);
-            iv.setSmooth(false);
+            if (this.views[2] == null) {
+                ImageView iv = new ImageView();
+                this.views[2] = iv;
+                this.getChildren().add(iv);
+            }
 
-            this.views[2] = iv;
-
-            this.getChildren().add(iv);
+            this.views[2].setImage(image);
+            this.views[2].setFitWidth(size);
+            this.views[2].setPreserveRatio(true);
+            this.views[2].setSmooth(false);
         } else {
             this.getChildren().remove(this.views[2]);
             this.views[2] = null;

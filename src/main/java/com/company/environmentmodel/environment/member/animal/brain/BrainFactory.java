@@ -16,10 +16,9 @@ public class BrainFactory {
     public static BrainFactory get() {
         if (instance == null) {
             instance = new BrainFactory();
+            carnivoreBrain = new CarnivoreBrain();
+            herbivoreBrain = new HerbivoreBrain();
         }
-
-        carnivoreBrain = new CarnivoreBrain();
-        herbivoreBrain = new HerbivoreBrain();
 
         return instance;
     }
