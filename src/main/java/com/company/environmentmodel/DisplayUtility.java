@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.company.environmentmodel.environment.Environment;
 import com.company.environmentmodel.environment.member.EnvironmentMember;
-import com.company.environmentmodel.environment.member.animals.Animal;
+import com.company.environmentmodel.environment.member.animal.Animal;
 
 import javafx.collections.ListChangeListener;
 import javafx.scene.effect.ColorAdjust;

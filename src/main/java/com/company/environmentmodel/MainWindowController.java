@@ -1,10 +1,10 @@
 package com.company.environmentmodel;
 
+import com.company.environmentmodel.environment.Direction;
 import com.company.environmentmodel.environment.Environment;
+import com.company.environmentmodel.environment.Tuple;
 
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -141,7 +141,12 @@ public class MainWindowController {
         });
 
         btnAdd.setOnAction(event -> {
-            environment.addRandomMembers(10);
+            // environment.addRandomMembers(10);
+            environment.addTestLayout(new Tuple(0, 0), Direction.NORTH);
+            environment.addTestLayout(new Tuple(7, 7), Direction.NORTH);
+            // environment.addTestLayout(new Tuple(13, 7), Direction.EAST);
+            // environment.addTestLayout(new Tuple(7, 13), Direction.WEST);
+            // environment.addTestLayout(new Tuple(13, 13), Direction.SOUTH);
         });
 
         btnClear.setOnAction(event -> {

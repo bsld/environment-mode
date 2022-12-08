@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class NeuralNetwork {
+public class NeuralNetwork implements Cloneable {
 
     private static final Logger logger = LogManager.getLogger(NeuralNetwork.class);
 
@@ -24,7 +24,7 @@ public class NeuralNetwork {
     private double learningRate = 0.01;
     private double momentum = 0.5;
     
-    private Function activationFunction = new Sigmoid(); // default activation function
+    private Function activationFunction = new Sigmoid();
     private boolean initialized = false;
 
     public NeuralNetwork(int inputSize, int hiddenSize, int outputSize) {
@@ -63,7 +63,7 @@ public class NeuralNetwork {
     }
 
 
-    public void train(MLDataSet set, int epoch) {
+    public void train(MlDataSet set, int epoch) {
         if (!initialized){
             this.init();
         }
@@ -71,7 +71,7 @@ public class NeuralNetwork {
         for (int i = 0; i < epoch; i++) {
             Collections.shuffle(set.getData());
 
-            for (MLData datum : set.getData()) {
+            for (MlData datum : set.getData()) {
                 forward(datum.getInputs());
                 backward(datum.getTargets());
             }
@@ -114,7 +114,12 @@ public class NeuralNetwork {
         for (int i = 0; i < output.length; i++) {
             output[i] = outputLayer.get(i).getOutput();
         }
-        logger.info("Input : " + Arrays.toString(inputs) + " Predicted : " + Arrays.toString(output));
+        logger.info("\nInput : " + Arrays.toString(inputs) + "\nPredicted : " + Arrays.toString(output) + "\n\n");
         return output;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

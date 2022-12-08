@@ -1,12 +1,14 @@
 package com.company.environmentmodel.environment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.company.environmentmodel.environment.member.EnvironmentMember;
-import com.company.environmentmodel.environment.member.animals.Camel;
-import com.company.environmentmodel.environment.member.animals.Rabbit;
-import com.company.environmentmodel.environment.member.animals.Wolf;
+import com.company.environmentmodel.environment.member.animal.carnivore.Wolf;
+import com.company.environmentmodel.environment.member.animal.herbivore.Camel;
+import com.company.environmentmodel.environment.member.animal.herbivore.Rabbit;
 import com.company.environmentmodel.environment.member.plants.Cactus;
 import com.company.environmentmodel.environment.member.plants.Carrot;
 
@@ -53,18 +55,22 @@ public class Environment {
     public int getTotalCells() {
         return totalCells;
     }
-    
+
     public void update() {
-        // we will call this method in a loop/thread to update our environment (to move members and stuff)
+        // we will call this method in a loop/thread to update our environment (to move
+        // members and stuff)
         for (EnvironmentMember m : this.members) {
-            m.update();
+            // m.update();
+            if (m instanceof Rabbit) {
+                m.update();
+            }
         }
     }
-    
+
     public ObservableList<EnvironmentMember> getMembers() {
         return members;
     }
-    
+
     public void reset() {
         this.unoccupiedCells = new ArrayList<>(this.totalCells);
         for (int i = 0; i < width; i++) {
@@ -74,9 +80,6 @@ public class Environment {
         }
 
         this.members.clear();
-        
-        // this.members.remove(12);
-        // this.members.remove(10, 19);
     }
 
     public boolean addMember(EnvironmentMember member) {
@@ -98,19 +101,102 @@ public class Environment {
 
         EnvironmentMember m = null;
         if (c <= 0.25f) {
-            m = new Carrot();
+            m = new Carrot(this);
         } else if (c <= 0.50f) {
-            m = new Rabbit();
+            m = new Rabbit(this);
         } else if (c <= 0.65f) {
-            m = new Wolf();
+            m = new Wolf(this);
         } else if (c <= 0.80f) {
-            m = new Cactus();
+            m = new Cactus(this);
         } else if (c <= 1) {
-            m = new Camel();
+            m = new Camel(this);
         }
-        ;
 
         return this.addMember(m);
+    }
+
+    public void addTestLayout(Tuple pos, Direction dir) {
+        Rabbit r = new Rabbit(this);
+        r.setPosition(pos);
+        r.setOrientation(dir);
+
+        this.members.add(r);
+
+        List<Tuple> left;
+        List<Tuple> front;
+        List<Tuple> nearby;
+        List<Tuple> right;
+
+        switch (r.getOrientation()) {
+            case NORTH:
+                nearby = Arrays.asList(new Tuple(-1, 0), new Tuple(-1, -1), new Tuple(0, -1),
+                        new Tuple(1, -1),
+                        new Tuple(1, 0));
+                left = Arrays.asList(new Tuple(-2, 0), new Tuple(-2, -1), new Tuple(-2, -2), new Tuple(-1, -2));
+                front = Arrays.asList(new Tuple(0, -2));
+                right = Arrays.asList(new Tuple(2, 0), new Tuple(2, -1), new Tuple(2, -2), new Tuple(1, -2));
+                break;
+
+            case EAST:
+                nearby = Arrays.asList(new Tuple(0, -1), new Tuple(1, -1), new Tuple(1, 0),
+                        new Tuple(1, 1),
+                        new Tuple(0, 1));
+                left = Arrays.asList(new Tuple(0, -2), new Tuple(1, -2), new Tuple(2, -2), new Tuple(2, -1));
+                front = Arrays.asList(new Tuple(2, 0));
+                right = Arrays.asList(new Tuple(0, 2), new Tuple(1, 2), new Tuple(2, 1), new Tuple(2, 2));
+
+                break;
+
+            case SOUTH:
+                nearby = Arrays.asList(new Tuple(1, 0), new Tuple(1, 1), new Tuple(0, 1),
+                        new Tuple(-1, 1),
+                        new Tuple(-1, 0));
+                left = Arrays.asList(new Tuple(2, 0), new Tuple(2, 1), new Tuple(2, 2), new Tuple(1, 2));
+                front = Arrays.asList(new Tuple(0, 2));
+                right = Arrays.asList(new Tuple(-2, 0), new Tuple(-2, 1), new Tuple(-1, 2), new Tuple(-2, 2));
+
+                break;
+
+            case WEST:
+                nearby = Arrays.asList(new Tuple(0, 1), new Tuple(-1, 1), new Tuple(-1, 0),
+                        new Tuple(-1, -1),
+                        new Tuple(0, -1));
+                left = Arrays.asList(new Tuple(0, 2), new Tuple(-1, 2), new Tuple(-2, 2), new Tuple(-2, 1));
+                front = Arrays.asList(new Tuple(-2, 0));
+                right = Arrays.asList(new Tuple(0, -2), new Tuple(-1, -2), new Tuple(-2, -1), new Tuple(-2, -2));
+                break;
+
+            default:
+                nearby = new ArrayList<>();
+                left = new ArrayList<>();
+                front = new ArrayList<>();
+                right = new ArrayList<>();
+                break;
+        }
+
+        front.stream().map(t -> r.getPosition().addMod(t, this.width, this.height)).forEach(p -> {
+            Carrot m = new Carrot(this);
+            m.setPosition(p);
+            this.members.add(m);
+        });
+
+        nearby.stream().map(t -> r.getPosition().addMod(t, this.width, this.height)).forEach(p -> {
+            Cactus m = new Cactus(this);
+            m.setPosition(p);
+            this.members.add(m);
+        });
+
+        left.stream().map(t -> r.getPosition().addMod(t, this.width, this.height)).forEach(p -> {
+            Camel m = new Camel(this);
+            m.setPosition(p);
+            this.members.add(m);
+        });
+
+        right.stream().map(t -> r.getPosition().addMod(t, this.width, this.height)).forEach(p -> {
+            Wolf m = new Wolf(this);
+            m.setPosition(p);
+            this.members.add(m);
+        });
     }
 
     public boolean addRandomMembers(int n) {
@@ -121,5 +207,15 @@ public class Environment {
         }
 
         return true;
+    }
+
+    public EnvironmentMember getByPos(Tuple pos) {
+        for (EnvironmentMember m : this.members) {
+            if (m.getPosition().equals(pos)) {
+                return m;
+            }
+        }
+
+        return null;
     }
 }

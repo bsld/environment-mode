@@ -1,7 +1,7 @@
 package com.company.environmentmodel.neuro;
 
 // MLData class holds all the input values and target values.
-public class MLData {
+public class MlData {
 
     private double[] inputs;
     private double[] targets;
@@ -10,7 +10,7 @@ public class MLData {
         this.targets = targets;
     }
 
-    public MLData(double[] inputs, double[] targets) {
+    public MlData(double[] inputs, double[] targets) {
         this.inputs = inputs;
         this.targets = targets;
     }

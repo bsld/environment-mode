@@ -18,7 +18,7 @@ public class ActivationFunction {
     }
 }
 
-class Sigmoid implements Function {
+final class Sigmoid implements Function {
     @Override
     public double output(double x) {
         return 1 / (1 + Math.exp(-x));
@@ -30,7 +30,7 @@ class Sigmoid implements Function {
     }
 }
 
-class LeakyReLu implements Function {
+final class LeakyReLu implements Function {
     @Override
     public double output(double x) {
         return x >= 0 ? x : x * 0.01;
@@ -42,7 +42,7 @@ class LeakyReLu implements Function {
     }
 }
 
-class Swish implements Function {
+final class Swish implements Function {
     @Override
     public double output(double x) {
         return x * (1 / (1 + Math.exp(-x)));
@@ -54,7 +54,7 @@ class Swish implements Function {
     }
 }
 
-class TanH implements Function {
+final class TanH implements Function {
     @Override
     public double output(double x) {
         return Math.tanh(x);

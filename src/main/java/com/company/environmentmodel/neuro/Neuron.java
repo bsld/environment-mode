@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 // Neuron class has incoming connections of neuron and outgoing connections of neuron and holds gradient, output and activation function.
-public class Neuron {
+public class Neuron implements Cloneable {
 
     private UUID neuronId;
     private List<Connection> incomingConnections;
@@ -40,19 +40,19 @@ public class Neuron {
         }
         this.output = activationFunction.output(this.outputBeforeActivation + bias);
     }
-    
+
     public double getGradient() {
         return gradient;
     }
-    
+
     public double getOutput() {
         return output;
     }
-    
+
     public void setOutput(double output) {
         this.output = output;
     }
-    
+
     public List<Connection> getOutgoingConnections() {
         return outgoingConnections;
     }
@@ -79,4 +79,8 @@ public class Neuron {
         }
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }
