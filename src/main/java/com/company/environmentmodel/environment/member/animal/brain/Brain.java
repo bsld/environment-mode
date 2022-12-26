@@ -1,6 +1,6 @@
 package com.company.environmentmodel.environment.member.animal.brain;
 
-import com.company.environmentmodel.neuro.ActivationFunction;
+import com.company.environmentmodel.neuro.Functions;
 import com.company.environmentmodel.neuro.MlDataSet;
 import com.company.environmentmodel.neuro.NeuralNetwork;
 
@@ -13,7 +13,7 @@ public abstract class Brain implements Cloneable {
         net.setLearningRate(0.01);
         net.setMomentum(0.5);
         // net.setActivationFunction(ActivationFunction.leakyReLu());
-        net.setActivationFunction(ActivationFunction.sigmoid());
+        net.setActivationFunction(Functions.sigmoid());
         train();
     }
 

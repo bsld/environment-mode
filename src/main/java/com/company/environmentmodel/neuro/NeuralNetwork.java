@@ -24,7 +24,7 @@ public class NeuralNetwork implements Cloneable {
     private double learningRate = 0.01;
     private double momentum = 0.5;
     
-    private Function activationFunction = new Sigmoid();
+    private ActivationFunction activationFunction = new Sigmoid();
     private boolean initialized = false;
 
     public NeuralNetwork(int inputSize, int hiddenSize, int outputSize) {
@@ -44,7 +44,7 @@ public class NeuralNetwork implements Cloneable {
         this.momentum = momentum;
     }
 
-    public void setActivationFunction(Function activationFunction) {
+    public void setActivationFunction(ActivationFunction activationFunction) {
         this.activationFunction = activationFunction;
     }
 
@@ -114,7 +114,7 @@ public class NeuralNetwork implements Cloneable {
         for (int i = 0; i < output.length; i++) {
             output[i] = outputLayer.get(i).getOutput();
         }
-        logger.info("\nInput : " + Arrays.toString(inputs) + "\nPredicted : " + Arrays.toString(output) + "\n\n");
+        // logger.info("\nInput : " + Arrays.toString(inputs) + "\nPredicted : " + Arrays.toString(output) + "\n\n");
         return output;
     }
 

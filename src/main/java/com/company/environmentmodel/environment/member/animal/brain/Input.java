@@ -24,6 +24,37 @@ public final class Input {
         initialize();
     }
 
+    public Input() {
+        nearby = new ArrayList<>();
+        left = new ArrayList<>();
+        front = new ArrayList<>();
+        right = new ArrayList<>();
+    }
+    
+    public void nearby(EnvironmentMember... members) {
+        for (EnvironmentMember m : members) {
+            nearby.add(m);
+        }
+    }
+    
+    public void left(EnvironmentMember... members) {
+        for (EnvironmentMember m : members) {
+            left.add(m);
+        }
+    }
+    
+    public void front(EnvironmentMember... members) {
+        for (EnvironmentMember m : members) {
+            front.add(m);
+        }
+    }
+    
+    public void right(EnvironmentMember... members) {
+        for (EnvironmentMember m : members) {
+            right.add(m);
+        }
+    }
+
     public static int getSize() {
         return 12;
     }

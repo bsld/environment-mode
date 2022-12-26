@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.company.environmentmodel.neuro.ActivationFunction;
+import com.company.environmentmodel.neuro.Functions;
 import com.company.environmentmodel.neuro.MlDataSet;
 import com.company.environmentmodel.neuro.NeuralNetwork;
 
@@ -192,7 +192,7 @@ class MainNN2 {
         net.setLearningRate(0.01);
         net.setMomentum(0.5);
         // net.setActivationFunction(ActivationFunction.leakyReLu());
-        net.setActivationFunction(ActivationFunction.sigmoid());
+        net.setActivationFunction(Functions.sigmoid());
 
         MlDataSet dataSet = new MlDataSet(INPUT, IDEAL);
         net.train(dataSet, 120000);
@@ -214,7 +214,7 @@ class MainNN2 {
         neuralNetwork.init();
         neuralNetwork.setLearningRate(0.01);
         neuralNetwork.setMomentum(0.4);
-        neuralNetwork.setActivationFunction(ActivationFunction.leakyReLu());
+        neuralNetwork.setActivationFunction(Functions.leakyReLu());
 
         MlDataSet dataSet = new MlDataSet(INPUT, IDEAL);
         neuralNetwork.train(dataSet, 100000);
@@ -248,7 +248,7 @@ class MainNN {
         neuralNetwork.setLearningRate(0.01);
         neuralNetwork.setMomentum(0.5);
         // neuralNetwork.setActivationFunction(ActivationFunction.leakyReLu());
-        neuralNetwork.setActivationFunction(ActivationFunction.sigmoid());
+        neuralNetwork.setActivationFunction(Functions.sigmoid());
 
         MlDataSet dataSet = new MlDataSet(XOR_INPUT, XOR_IDEAL);
         neuralNetwork.train(dataSet, 100000);
@@ -266,7 +266,7 @@ class MainNN {
         neuralNetwork.init();
         neuralNetwork.setLearningRate(0.01);
         neuralNetwork.setMomentum(0.4);
-        neuralNetwork.setActivationFunction(ActivationFunction.leakyReLu());
+        neuralNetwork.setActivationFunction(Functions.leakyReLu());
 
         MlDataSet dataSet = new MlDataSet(XOR_INPUT, XOR_IDEAL);
         neuralNetwork.train(dataSet, 150000);

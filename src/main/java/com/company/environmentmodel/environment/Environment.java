@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.company.environmentmodel.environment.member.EnvironmentMember;
+import com.company.environmentmodel.environment.member.animal.brain.BrainFactory;
 import com.company.environmentmodel.environment.member.animal.carnivore.Wolf;
 import com.company.environmentmodel.environment.member.animal.herbivore.Camel;
 import com.company.environmentmodel.environment.member.animal.herbivore.Rabbit;
@@ -19,25 +20,18 @@ public class Environment {
     private int width, height;
     // private int occupiedCells;
     private int totalCells;
-    private ArrayList<Tuple> unoccupiedCells;
     private ObservableList<EnvironmentMember> members;
 
     public Environment(int width, int height) {
         this.setSize(width, height);
         this.members = FXCollections.observableArrayList();
+        BrainFactory.get();
     }
 
     public void setSize(int width, int height) {
         this.width = width;
         this.height = height;
         this.totalCells = width * height;
-
-        this.unoccupiedCells = new ArrayList<>(this.totalCells);
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                this.unoccupiedCells.add(new Tuple(i, j));
-            }
-        }
     }
 
     public int getWidth() {
@@ -49,7 +43,7 @@ public class Environment {
     }
 
     public int getOccupiedCells() {
-        return totalCells - unoccupiedCells.size();
+        return members.size();
     }
 
     public int getTotalCells() {
@@ -57,12 +51,12 @@ public class Environment {
     }
 
     public void update() {
-        // we will call this method in a loop/thread to update our environment (to move
-        // members and stuff)
+        // we will call this method in a loop/thread to update our environment
+        // (to move members and stuff)
         for (EnvironmentMember m : this.members) {
             m.update();
             // if (m instanceof Rabbit) {
-            //     m.update();
+            // m.update();
             // }
         }
     }
@@ -72,13 +66,6 @@ public class Environment {
     }
 
     public void reset() {
-        this.unoccupiedCells = new ArrayList<>(this.totalCells);
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                this.unoccupiedCells.add(new Tuple(i, j));
-            }
-        }
-
         this.members.clear();
     }
 
@@ -87,11 +74,22 @@ public class Environment {
             return false;
         }
 
-        int n = ThreadLocalRandom.current().nextInt(0, unoccupiedCells.size());
+        int x;
+        int y;
 
-        member.setPosition(unoccupiedCells.get(n));
-        members.add(member);
-        unoccupiedCells.remove(n);
+        while (true) {
+            x = ThreadLocalRandom.current().nextInt(0, width);
+            y = ThreadLocalRandom.current().nextInt(0, height);
+            Tuple pos = new Tuple(x, y);
+
+            System.out.println(pos.toString());
+
+            if (getByPos(pos) == null) {
+                member.setPosition(pos);
+                members.add(member);
+                break;
+            }
+        }
 
         return true;
     }
@@ -207,6 +205,10 @@ public class Environment {
         }
 
         return true;
+    }
+
+    public EnvironmentMember getByPos(int x, int y) {
+        return getByPos(new Tuple(x, y));
     }
 
     public EnvironmentMember getByPos(Tuple pos) {

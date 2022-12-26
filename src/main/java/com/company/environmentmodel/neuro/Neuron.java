@@ -14,7 +14,7 @@ public class Neuron implements Cloneable {
     private double gradient;
     private double output;
     private double outputBeforeActivation;
-    private Function activationFunction;
+    private ActivationFunction activationFunction;
 
     public Neuron() {
         this.neuronId = UUID.randomUUID();
@@ -23,7 +23,7 @@ public class Neuron implements Cloneable {
         this.bias = 1.0;
     }
 
-    public Neuron(List<Neuron> neurons, Function activationFunction) {
+    public Neuron(List<Neuron> neurons, ActivationFunction activationFunction) {
         this();
         this.activationFunction = activationFunction;
         for (Neuron neuron : neurons) {
