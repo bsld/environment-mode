@@ -8,7 +8,7 @@ public abstract class Brain implements Cloneable {
     protected NeuralNetwork net;
 
     protected Brain() {
-        net = new NeuralNetwork(Input.getSize(), 13, Output.getSize());
+        net = new NeuralNetwork(Input.getSize(), 13, Action.getSize());
         net.init();
         net.setLearningRate(0.01);
         net.setMomentum(0.5);
@@ -23,12 +23,12 @@ public abstract class Brain implements Cloneable {
 
     protected abstract MlDataSet getTrainingSets();
 
-    public Output ponder(Input input) {
+    public Action ponder(Input input) {
         double[] data = input.toArray();
 
         double[] predicted = this.net.predict(data);
 
-        return Output.fromArray(predicted);
+        return Action.fromArray(predicted);
     }
 
     @Override

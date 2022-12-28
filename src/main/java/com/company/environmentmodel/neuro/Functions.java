@@ -25,7 +25,7 @@ final class Sigmoid implements ActivationFunction {
     }
 
     @Override
-    public double outputDerivative(double x) {
+    public double derivative(double x) {
         return x * (1 - x);
     }
 }
@@ -37,7 +37,7 @@ final class LeakyReLu implements ActivationFunction {
     }
 
     @Override
-    public double outputDerivative(double x) {
+    public double derivative(double x) {
         return x >= 0 ? 1 : 0.01;
     }
 }
@@ -49,7 +49,7 @@ final class Swish implements ActivationFunction {
     }
 
     @Override
-    public double outputDerivative(double x) {
+    public double derivative(double x) {
         return ((1 + Math.exp(-x)) + x * Math.exp(-x)) / Math.pow(1 + Math.exp(-x), 2);
     }
 }
@@ -61,7 +61,7 @@ final class TanH implements ActivationFunction {
     }
 
     @Override
-    public double outputDerivative(double x) {
+    public double derivative(double x) {
         return 1 - Math.pow(Math.tanh(x), 2);
     }
 }

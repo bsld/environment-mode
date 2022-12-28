@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.company.environmentmodel.environment.member.animal.brain.Input;
-import com.company.environmentmodel.environment.member.animal.brain.Output;
+import com.company.environmentmodel.environment.member.animal.brain.Action;
 
 // MLDataSet class holds all the input values and target values List.
 public class MlDataSet {
@@ -26,7 +26,7 @@ public class MlDataSet {
         }
     }
     
-    public MlDataSet(List<Input> inputs, List<Output> targets) {
+    public MlDataSet(List<Input> inputs, List<Action> targets) {
         this.data = new ArrayList<>();
         this.inputs = new double[inputs.size()][];
         this.targets = new double[targets.size()][];

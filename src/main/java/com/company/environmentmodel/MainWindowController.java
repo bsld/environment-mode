@@ -1,6 +1,8 @@
 package com.company.environmentmodel;
 
+import com.company.environmentmodel.environment.Direction;
 import com.company.environmentmodel.environment.Environment;
+import com.company.environmentmodel.environment.Tuple;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
@@ -140,6 +142,7 @@ public class MainWindowController {
         });
 
         btnAdd.setOnAction(event -> {
+            // environment.addTestLayout2(new Tuple(7, 7), Direction.NORTH);
             environment.addRandomMembers(10);
             // environment.addTestLayout(new Tuple(0, 0), Direction.NORTH);
             // environment.addTestLayout(new Tuple(7, 7), Direction.NORTH);

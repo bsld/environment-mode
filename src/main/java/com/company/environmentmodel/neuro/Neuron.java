@@ -62,13 +62,13 @@ public class Neuron implements Cloneable {
     }
 
     public void calculateGradient(double target) {
-        this.gradient = error(target) * activationFunction.outputDerivative(output);
+        this.gradient = error(target) * activationFunction.derivative(output);
     }
 
     public void calculateGradient() {
         this.gradient = outgoingConnections.stream()
                 .mapToDouble(connection -> connection.getTo().getGradient() * connection.getSynapticWeight()).sum()
-                * activationFunction.outputDerivative(output);
+                * activationFunction.derivative(output);
     }
 
     public void updateConnections(double lr, double mu) {

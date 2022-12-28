@@ -1,20 +1,20 @@
 package com.company.environmentmodel.environment.member.animal.brain;
 
-public enum Output {
+public enum Action {
     MOVE, EAT, TURN_LEFT, TURN_RIGHT;
 
     public static int getSize() {
         return 4;
     }
 
-    public static Output fromArray(double[] predicted) {
+    public static Action fromArray(double[] predicted) {
         for (int i = 0; i < predicted.length; i++) {
             if (Math.abs(1.0 - predicted[i]) <= 0.1) {
-                return Output.values()[i];
+                return Action.values()[i];
             }
         }
 
-        return Output.TURN_RIGHT;
+        return Action.TURN_RIGHT;
     }
     
     public double[] toArray() {

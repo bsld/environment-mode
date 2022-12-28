@@ -54,10 +54,10 @@ public class Environment {
         // we will call this method in a loop/thread to update our environment
         // (to move members and stuff)
         for (EnvironmentMember m : this.members) {
-            m.update();
-            // if (m instanceof Rabbit) {
             // m.update();
-            // }
+            if (m instanceof Wolf) {
+                m.update();
+            }
         }
     }
 
@@ -111,6 +111,32 @@ public class Environment {
         }
 
         return this.addMember(m);
+    }
+
+    public void addTestLayout2(Tuple pos, Direction dir) {
+        Wolf w = new Wolf(this);
+        w.setPosition(pos);
+        w.setOrientation(dir);
+
+        this.members.add(w);
+
+        Rabbit r = new Rabbit(this);
+        r.setPosition(pos.addMod(new Tuple(-2, 0), totalCells, height));
+        r.setOrientation(dir);
+
+        this.members.add(r);
+        
+        r = new Rabbit(this);
+        r.setPosition(pos.addMod(new Tuple(0, -2), totalCells, height));
+        r.setOrientation(dir);
+
+        this.members.add(r);
+        
+        // r = new Rabbit(this);
+        // r.setPosition(pos.addMod(new Tuple(2, 0), totalCells, height));
+        // r.setOrientation(dir);
+
+        // this.members.add(r);
     }
 
     public void addTestLayout(Tuple pos, Direction dir) {
@@ -219,5 +245,9 @@ public class Environment {
         }
 
         return null;
+    }
+
+    public boolean isOccupied(Tuple newPosition) {
+        return getByPos(newPosition) != null;
     }
 }
