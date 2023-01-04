@@ -1,6 +1,12 @@
 package com.company.environmentmodel.environment.member.animal.herbivore;
 
+import java.util.List;
+
 import com.company.environmentmodel.environment.Environment;
+import com.company.environmentmodel.environment.member.Eatable;
+import com.company.environmentmodel.environment.member.EnvironmentMember;
+import com.company.environmentmodel.environment.member.animal.Animal;
+import com.company.environmentmodel.environment.member.plants.Carrot;
 
 public class Rabbit extends Herbivore {
 
@@ -10,12 +16,22 @@ public class Rabbit extends Herbivore {
     }
 
     @Override
-    public int nutrition() {
-        return 43;
+    public double nutrition() {
+        return 23.0;
     }
 
     @Override
-    public void update() {
-        super.update();
+    protected Eatable getFood(List<EnvironmentMember> nearbyCells) {
+        for (EnvironmentMember m : nearbyCells) {
+            if (m instanceof Carrot) {
+                return (Eatable) m;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    protected Animal getOffspring() {
+        return new Rabbit(environment);
     }
 }

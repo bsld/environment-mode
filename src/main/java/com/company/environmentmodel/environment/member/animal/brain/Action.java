@@ -1,7 +1,7 @@
 package com.company.environmentmodel.environment.member.animal.brain;
 
 public enum Action {
-    MOVE, EAT, TURN_LEFT, TURN_RIGHT;
+    MOVE, EAT, TURN_LEFT, TURN_RIGHT, DIE, REPRODUCE;
 
     public static int getSize() {
         return 4;
@@ -14,7 +14,8 @@ public enum Action {
             }
         }
 
-        return Action.TURN_RIGHT;
+        // inaccurate prediction
+        return Action.MOVE;
     }
     
     public double[] toArray() {

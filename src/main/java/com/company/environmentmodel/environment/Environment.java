@@ -2,23 +2,22 @@ package com.company.environmentmodel.environment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.company.environmentmodel.environment.member.EnvironmentMember;
+import com.company.environmentmodel.environment.member.animal.Animal;
 import com.company.environmentmodel.environment.member.animal.brain.BrainFactory;
-import com.company.environmentmodel.environment.member.animal.carnivore.Wolf;
-import com.company.environmentmodel.environment.member.animal.herbivore.Camel;
-import com.company.environmentmodel.environment.member.animal.herbivore.Rabbit;
-import com.company.environmentmodel.environment.member.plants.Cactus;
-import com.company.environmentmodel.environment.member.plants.Carrot;
+import com.company.environmentmodel.environment.member.animal.carnivore.*;
+import com.company.environmentmodel.environment.member.animal.herbivore.*;
+import com.company.environmentmodel.environment.member.plants.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Environment {
     private int width, height;
-    // private int occupiedCells;
     private int totalCells;
     private ObservableList<EnvironmentMember> members;
 
@@ -51,13 +50,12 @@ public class Environment {
     }
 
     public void update() {
-        // we will call this method in a loop/thread to update our environment
-        // (to move members and stuff)
-        for (EnvironmentMember m : this.members) {
-            // m.update();
-            if (m instanceof Wolf) {
+        try {
+            for (EnvironmentMember m : this.members) {
                 m.update();
             }
+        } catch (ConcurrentModificationException e) {
+
         }
     }
 
@@ -82,8 +80,6 @@ public class Environment {
             y = ThreadLocalRandom.current().nextInt(0, height);
             Tuple pos = new Tuple(x, y);
 
-            System.out.println(pos.toString());
-
             if (getByPos(pos) == null) {
                 member.setPosition(pos);
                 members.add(member);
@@ -100,14 +96,18 @@ public class Environment {
         EnvironmentMember m = null;
         if (c <= 0.25f) {
             m = new Carrot(this);
-        } else if (c <= 0.50f) {
+        } else if (c <= 0.38f) {
             m = new Rabbit(this);
-        } else if (c <= 0.65f) {
+        } else if (c <= 0.45f) {
             m = new Wolf(this);
-        } else if (c <= 0.80f) {
-            m = new Cactus(this);
-        } else if (c <= 1) {
+        } else if (c <= 0.55f) {
             m = new Camel(this);
+        } else if (c <= 0.65) {
+            m = new Cat(this);
+        } else if (c <= 0.81) {
+            m = new Rat(this);
+        } else if (c <= 1) {
+            m = new Cactus(this);
         }
 
         return this.addMember(m);
@@ -120,18 +120,18 @@ public class Environment {
 
         this.members.add(w);
 
-        Rabbit r = new Rabbit(this);
-        r.setPosition(pos.addMod(new Tuple(-2, 0), totalCells, height));
-        r.setOrientation(dir);
+        // Rabbit r = new Rabbit(this);
+        // r.setPosition(pos.addMod(new Tuple(-2, 0), totalCells, height));
+        // r.setOrientation(dir);
 
-        this.members.add(r);
-        
-        r = new Rabbit(this);
-        r.setPosition(pos.addMod(new Tuple(0, -2), totalCells, height));
-        r.setOrientation(dir);
+        // this.members.add(r);
 
-        this.members.add(r);
-        
+        // r = new Rabbit(this);
+        // r.setPosition(pos.addMod(new Tuple(0, -2), totalCells, height));
+        // r.setOrientation(dir);
+
+        // this.members.add(r);
+
         // r = new Rabbit(this);
         // r.setPosition(pos.addMod(new Tuple(2, 0), totalCells, height));
         // r.setOrientation(dir);
@@ -247,7 +247,26 @@ public class Environment {
         return null;
     }
 
+    public boolean isOccupied(int x, int y) {
+        return isOccupied(new Tuple(x, y));
+    }
+
     public boolean isOccupied(Tuple newPosition) {
         return getByPos(newPosition) != null;
+    }
+
+    public boolean addMemberNearby(Tuple pos, Animal child) {
+        for (int i = -3; i < 4; i++) {
+            for (int j = -3; j < 4; j++) {
+                Tuple newPos = pos.addMod(new Tuple(i, j), width, height);
+                if (!isOccupied(newPos)) {
+                    child.setPosition(newPos);
+                    this.members.add(child);
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

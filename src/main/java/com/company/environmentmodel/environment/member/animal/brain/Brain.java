@@ -11,14 +11,15 @@ public abstract class Brain implements Cloneable {
         net = new NeuralNetwork(Input.getSize(), 13, Action.getSize());
         net.init();
         net.setLearningRate(0.01);
-        net.setMomentum(0.5);
-        // net.setActivationFunction(ActivationFunction.leakyReLu());
-        net.setActivationFunction(Functions.sigmoid());
+        // net.setMomentum(0.5);
+        net.setMomentum(0.6);
+        net.setActivationFunction(Functions.leakyReLu());
+        // net.setActivationFunction(Functions.sigmoid());
         train();
     }
 
     void train() {
-        this.net.train(getTrainingSets(), 100000);
+        this.net.train(getTrainingSets(), 120000);
     }
 
     protected abstract MlDataSet getTrainingSets();

@@ -8,23 +8,29 @@ public abstract class EnvironmentMember {
     protected String name;
     protected Environment environment;
 
+    /**
+     * A timer for something.
+     * <p>
+     * `-1` means that timer is inactive.
+     */
+    protected int timer = -1;
+
     public EnvironmentMember(Environment environment) {
         this.environment = environment;
     }
 
-    /**
-     * The number of frames after which this member will be deleted from the
-     * environment.
-     * <p>
-     * `-1` indicates unlimited amount of frames.
-     */
-    protected int timeToLive = -1;
-
     public void update() {
-        if (this.timeToLive > 0) {
-            this.timeToLive--;
+        if (this.timer > 0) {
+            this.timer--;
+
+            if (this.timer == 0) {
+                this.timer = -1;
+                this.timerAction();
+            }
         }
     }
+
+    protected abstract void timerAction();
 
     public final Tuple getPosition() {
         return position;
@@ -42,7 +48,7 @@ public abstract class EnvironmentMember {
         return environment;
     }
 
-    public int getTimeToLive() {
-        return timeToLive;
+    public int getTimer() {
+        return timer;
     }
 }

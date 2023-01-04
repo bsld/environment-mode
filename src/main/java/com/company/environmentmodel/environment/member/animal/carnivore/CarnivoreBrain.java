@@ -14,8 +14,6 @@ public class CarnivoreBrain extends Brain {
 
     @Override
     protected MlDataSet getTrainingSets() {
-        System.out.println("carnivore sets");
-
         List<Input> inputs = new ArrayList<>();
         List<Action> targets = new ArrayList<>();
 
@@ -258,13 +256,13 @@ public class CarnivoreBrain extends Brain {
 
         /*                                       */
 
-        input = new Input();
-        input.front(new Carrot(null));
+        // input = new Input();
+        // input.front(new Carrot(null));
 
-        target = Action.TURN_RIGHT;
+        // target = Action.TURN_RIGHT;
 
-        inputs.add(input);
-        targets.add(target);
+        // inputs.add(input);
+        // targets.add(target);
 
         /*                                       */
         /* Nearby */

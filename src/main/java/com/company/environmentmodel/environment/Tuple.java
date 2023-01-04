@@ -38,7 +38,7 @@ public final class Tuple {
 
         return true;
     }
-
+    
     public Tuple add(Tuple rhs) {
         return new Tuple(this.x + rhs.x, this.y + rhs.y);
     }

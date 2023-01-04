@@ -41,5 +41,4 @@ public class Connection {
     public void updateSynapticWeight(double synapticWeight) {
         this.synapticWeight += synapticWeight;
     }
-
 }

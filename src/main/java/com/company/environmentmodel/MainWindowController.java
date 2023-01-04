@@ -38,8 +38,6 @@ public class MainWindowController {
     @FXML
     private Button btnClear;
     @FXML
-    private Button btnRedraw;
-    @FXML
     private Button btnSimulationControl;
     @FXML
     private Pane container;
@@ -104,12 +102,7 @@ public class MainWindowController {
             this.btnCellSize.setDisable(this.running);
             this.btnAdd.setDisable(this.running);
             this.btnClear.setDisable(this.running);
-            this.btnRedraw.setDisable(this.running);
             this.cbDrawOrientation.setDisable(this.running);
-        });
-
-        btnRedraw.setOnAction(event -> {
-            // displayUtility.updateViews();
         });
 
         cbDrawOrientation.setOnAction(event -> {
@@ -121,7 +114,6 @@ public class MainWindowController {
             try {
                 newSize = Integer.parseInt(tfCellSize.getText());
             } catch (NumberFormatException e) {
-                System.out.println("unable to parse string, setting the default value");
                 newSize = 30;
             }
 
@@ -133,7 +125,6 @@ public class MainWindowController {
             try {
                 newSize = Integer.parseInt(tfEnvironmentSize.getText());
             } catch (NumberFormatException e) {
-                System.out.println("unable to parse string, setting the default value");
                 newSize = 30;
             }
             environmentSize = newSize;

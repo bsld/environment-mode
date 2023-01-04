@@ -8,6 +8,7 @@ import java.util.List;
 import com.company.environmentmodel.environment.Environment;
 import com.company.environmentmodel.environment.member.EnvironmentMember;
 import com.company.environmentmodel.environment.member.animal.Animal;
+import com.company.environmentmodel.environment.member.plants.Plant;
 
 import javafx.collections.ListChangeListener;
 import javafx.scene.effect.ColorAdjust;
@@ -54,9 +55,6 @@ public class DisplayUtility {
             }
 
             if (change.wasRemoved()) {
-                System.out.printf("remove: %d, from: %d, to: %d\n", change.getRemovedSize(), change.getFrom(),
-                        change.getTo());
-
                 List<MemberView> subList = this.views.subList(change.getFrom(),
                         change.getFrom() + change.getRemovedSize());
 
@@ -175,6 +173,8 @@ class MemberView extends StackPane {
     public void update() {
         updatePosition();
         updateOrientation();
+        updatePostMortemEffect();
+        updatePlant();
     }
 
     public void updatePosition() {
@@ -226,8 +226,15 @@ class MemberView extends StackPane {
     }
 
     private void updatePostMortemEffect() {
-        // TODO try visitor pattern
-        if (drawOrientation && (this.member instanceof Animal)) {
+        if (this.views[1] != null) {
+            this.views[1].setFitWidth(size);
+            this.views[1].setPreserveRatio(true);
+            this.views[1].setSmooth(false);
+
+            return;
+        }
+
+        if ((this.member instanceof Animal) && !(((Animal) this.member).isAlive())) {
             String filename = "src/main/resources/com/company/environmentmodel/images/Rip.png";
 
             Image image = null;
@@ -250,13 +257,44 @@ class MemberView extends StackPane {
             this.views[0].setEffect(colorAdjust);
 
             this.getChildren().add(iv);
-        } else {
-            this.getChildren().remove(this.views[1]);
-            this.views[1] = null;
+        }
+    }
 
-            ColorAdjust colorAdjust = new ColorAdjust();
-            colorAdjust.setSaturation(0);
-            this.views[0].setEffect(colorAdjust);
+    private void updatePlant() {
+        if (this.member instanceof Plant) {
+            Plant p = (Plant) this.member;
+            if (p.isRecovering()) {
+                String filename = "src/main/resources/com/company/environmentmodel/images/Recovering.png";
+
+                Image image = null;
+                try {
+                    FileInputStream input = new FileInputStream(filename);
+                    image = new Image(input);
+                } catch (FileNotFoundException e) {
+                }
+
+                if (this.views[1] == null) {
+                    ImageView iv = new ImageView();
+                    this.views[1] = iv;
+                    this.getChildren().add(iv);
+                }
+
+                this.views[1].setImage(image);
+                this.views[1].setFitWidth(size);
+                this.views[1].setPreserveRatio(true);
+                this.views[1].setSmooth(false);
+
+                ColorAdjust colorAdjust = new ColorAdjust();
+                colorAdjust.setSaturation(-0.83);
+                this.views[0].setEffect(colorAdjust);
+            } else {
+                this.getChildren().remove(this.views[1]);
+                this.views[1] = null;
+
+                ColorAdjust colorAdjust = new ColorAdjust();
+                colorAdjust.setSaturation(0);
+                this.views[0].setEffect(colorAdjust);
+            }
         }
     }
 

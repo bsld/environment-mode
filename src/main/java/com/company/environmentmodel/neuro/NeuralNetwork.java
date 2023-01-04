@@ -22,7 +22,7 @@ public class NeuralNetwork implements Cloneable {
 
     // https://machinelearningmastery.com/understand-the-dynamics-of-learning-rate-on-deep-learning-neural-networks/
     private double learningRate = 0.01;
-    private double momentum = 0.5;
+    private double momentum = 0.81;
     
     private ActivationFunction activationFunction = new Sigmoid();
     private boolean initialized = false;

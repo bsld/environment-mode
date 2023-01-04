@@ -1,9 +1,8 @@
 package com.company.environmentmodel.environment.member.plants;
 
 import com.company.environmentmodel.environment.Environment;
-import com.company.environmentmodel.environment.member.Eatable;
 
-public class Cactus extends Plant implements Eatable {
+public class Cactus extends Plant {
 
     public Cactus(Environment environment) {
         super(environment);
@@ -11,7 +10,7 @@ public class Cactus extends Plant implements Eatable {
     }
 
     @Override
-    public int nutrition() {
-        return 11;
+    public double nutrition() {
+        return 33.0;
     }
 }
