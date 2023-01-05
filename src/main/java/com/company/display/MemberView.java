@@ -93,8 +93,6 @@ class MemberView extends StackPane {
     }
 
     private void updateOrientation() {
-        // this.updatePostMortemEffect();
-        // TODO try visitor pattern
         if (drawOrientation && (this.member instanceof Animal)) {
             String filename = String.format(
                     "src/main/resources/com/company/environmentmodel/images/Direction%s.png",

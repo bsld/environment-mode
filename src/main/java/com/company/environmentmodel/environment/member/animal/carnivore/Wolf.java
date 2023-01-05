@@ -6,7 +6,6 @@ import com.company.environmentmodel.environment.Environment;
 import com.company.environmentmodel.environment.member.Eatable;
 import com.company.environmentmodel.environment.member.EnvironmentMember;
 import com.company.environmentmodel.environment.member.animal.Animal;
-import com.company.environmentmodel.environment.member.animal.brain.Action;
 import com.company.environmentmodel.environment.member.animal.herbivore.Rabbit;
 
 public class Wolf extends Carnivore {

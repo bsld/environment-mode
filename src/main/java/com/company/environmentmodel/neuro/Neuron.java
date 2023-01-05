@@ -2,12 +2,10 @@ package com.company.environmentmodel.neuro;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 // Neuron class has incoming connections of neuron and outgoing connections of neuron and holds gradient, output and activation function.
 public class Neuron implements Cloneable {
 
-    private UUID neuronId;
     private List<Connection> incomingConnections;
     private List<Connection> outgoingConnections;
     private double bias;
@@ -17,7 +15,6 @@ public class Neuron implements Cloneable {
     private ActivationFunction activationFunction;
 
     public Neuron() {
-        this.neuronId = UUID.randomUUID();
         this.incomingConnections = new ArrayList<>();
         this.outgoingConnections = new ArrayList<>();
         this.bias = 1.0;
