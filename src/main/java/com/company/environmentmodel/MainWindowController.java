@@ -1,8 +1,7 @@
 package com.company.environmentmodel;
 
-import com.company.environmentmodel.environment.Direction;
+import com.company.display.DisplayUtility;
 import com.company.environmentmodel.environment.Environment;
-import com.company.environmentmodel.environment.Tuple;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
