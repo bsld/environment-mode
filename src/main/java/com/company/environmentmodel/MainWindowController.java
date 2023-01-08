@@ -1,6 +1,6 @@
 package com.company.environmentmodel;
 
-import com.company.display.DisplayUtility;
+import com.company.environmentmodel.display.DisplayUtility;
 import com.company.environmentmodel.environment.Environment;
 
 import javafx.animation.AnimationTimer;

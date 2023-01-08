@@ -1,4 +1,4 @@
-package com.company.display;
+package com.company.environmentmodel.display;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

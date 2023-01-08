@@ -9,12 +9,12 @@ public abstract class Brain implements Cloneable {
 
     protected Brain() {
         net = new NeuralNetwork(Input.getSize(), 13, Action.getSize());
+        net.setActivationFunction(Functions.leakyReLu());
+        // net.setActivationFunction(Functions.sigmoid());
         net.init();
         net.setLearningRate(0.01);
         // net.setMomentum(0.5);
         net.setMomentum(0.6);
-        net.setActivationFunction(Functions.leakyReLu());
-        // net.setActivationFunction(Functions.sigmoid());
         train();
     }
 

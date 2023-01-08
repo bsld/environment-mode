@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Mike/source/Java/environment-model/src/main/java/com/company/environmentmodel</OriginalElement>
+  <nodes>
+    <node x="2313.5" y="1034.0">com.company.environmentmodel.neuro.TanH</node>
+    <node x="2053.5" y="854.0">com.company.environmentmodel.neuro.LeakyReLu</node>
+    <node x="1833.5" y="1046.0">com.company.environmentmodel.neuro.ActivationFunction</node>
+    <node x="1136.5" y="457.0">com.company.environmentmodel.environment.member.animal.carnivore.Carnivore</node>
+    <node x="1748.5" y="119.0">com.company.environmentmodel.environment.member.plants.Plant</node>
+    <node x="1121.5" y="1286.0">com.company.environmentmodel.environment.member.animal.herbivore.Herbivore</node>
+    <node x="-459.5" y="1419.0">com.company.environmentmodel.neuro.MlDataSet</node>
+    <node x="1081.5" y="1122.0">com.company.environmentmodel.environment.member.animal.herbivore.Camel</node>
+    <node x="401.5" y="844.0">com.company.environmentmodel.display.DisplayUtility</node>
+    <node x="1551.5" y="-130.0">com.company.environmentmodel.environment.Direction</node>
+    <node x="-208.5" y="594.0">com.company.environmentmodel.Main</node>
+    <node x="-431.0" y="1651.0">com.company.environmentmodel.neuro.MlData</node>
+    <node x="2313.5" y="674.0">com.company.environmentmodel.neuro.Swish</node>
+    <node x="961.5" y="-644.0">com.company.environmentmodel.environment.member.animal.Animal</node>
+    <node x="1482.0" y="351.0">com.company.environmentmodel.environment.member.animal.brain.Brain</node>
+    <node x="418.5" y="605.0">com.company.environmentmodel.MainWindowController</node>
+    <node x="784.0" y="1305.0">com.company.environmentmodel.environment.member.plants.Cactus</node>
+    <node x="1076.5" y="325.0">com.company.environmentmodel.neuro.RandomGenerator</node>
+    <node x="181.5" y="1442.0">com.company.environmentmodel.environment.member.animal.herbivore.Rabbit</node>
+    <node x="1833.5" y="1274.0">com.company.environmentmodel.neuro.Sigmoid</node>
+    <node x="1785.5" y="351.0">com.company.environmentmodel.neuro.Neuron</node>
+    <node x="1754.5" y="-466.0">com.company.environmentmodel.environment.member.Eatable</node>
+    <node x="1440.0" y="1162.0">com.company.environmentmodel.neuro.NeuralNetwork</node>
+    <node x="1337.5" y="-130.0">com.company.environmentmodel.environment.member.animal.brain.Action</node>
+    <node x="482.0" y="1679.0">com.company.environmentmodel.environment.member.animal.brain.BrainFactory</node>
+    <node x="502.0" y="1305.0">com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain</node>
+    <node x="721.5" y="422.0">com.company.environmentmodel.environment.member.animal.carnivore.Cat</node>
+    <node x="2106.0" y="35.0">com.company.environmentmodel.neuro.Connection</node>
+    <node x="712.0" y="712.0">com.company.environmentmodel.environment.Environment</node>
+    <node x="-98.0" y="1465.0">com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain</node>
+    <node x="-6.0" y="844.0">com.company.environmentmodel.display.MemberView</node>
+    <node x="265.5" y="1605.0">com.company.environmentmodel.environment.member.plants.Carrot</node>
+    <node x="2299.0" y="832.0">com.company.environmentmodel.neuro.Functions</node>
+    <node x="-158.5" y="1282.0">com.company.environmentmodel.environment.member.animal.carnivore.Wolf</node>
+    <node x="507.5" y="-544.0">com.company.environmentmodel.environment.member.animal.brain.Input</node>
+    <node x="585.5" y="64.0">com.company.environmentmodel.environment.member.EnvironmentMember</node>
+    <node x="1081.5" y="922.0">com.company.environmentmodel.environment.member.animal.carnivore.Rat</node>
+    <node x="604.5" y="-159.0">com.company.environmentmodel.environment.Tuple</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain" target="com.company.environmentmodel.environment.member.animal.herbivore.Rabbit" relationship="CREATE">
+      <point x="0.0" y="39.0" />
+      <point x="-14.0" y="1583.5" />
+      <point x="487.0" y="1583.5" />
+      <point x="487.0" y="1504.0" />
+      <point x="144.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.MainWindowController" target="com.company.environmentmodel.display.DisplayUtility" relationship="CREATE">
+      <point x="15.0" y="39.0" />
+      <point x="15.0" y="-140.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Functions" target="com.company.environmentmodel.neuro.LeakyReLu" relationship="CREATE">
+      <point x="-107.0" y="0.0" />
+      <point x="92.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.Environment" target="com.company.environmentmodel.environment.member.plants.Carrot" relationship="CREATE">
+      <point x="-99.5" y="272.0" />
+      <point x="766.5" y="1404.0" />
+      <point x="601.0" y="1404.0" />
+      <point x="601.0" y="1644.0" />
+      <point x="80.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.Cat" target="com.company.environmentmodel.environment.member.animal.carnivore.Carnivore" relationship="GENERALIZATION">
+      <point x="144.5" y="0.0" />
+      <point x="-89.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain" target="com.company.environmentmodel.environment.member.animal.brain.Brain" relationship="GENERALIZATION">
+      <point x="-30.0" y="39.0" />
+      <point x="556.0" y="1464.0" />
+      <point x="1403.0" y="1464.0" />
+      <point x="1403.0" y="420.5" />
+      <point x="-84.0" y="-3.5" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Sigmoid" target="com.company.environmentmodel.neuro.ActivationFunction" relationship="REALIZATION">
+      <point x="92.5" y="0.0" />
+      <point x="2036.0" y="1324.0" />
+      <point x="2036.0" y="1084.0" />
+      <point x="92.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain" target="com.company.environmentmodel.environment.member.animal.carnivore.Wolf" relationship="CREATE">
+      <point x="84.0" y="0.0" />
+      <point x="156.0" y="1504.0" />
+      <point x="156.0" y="1344.0" />
+      <point x="144.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.display.DisplayUtility" target="com.company.environmentmodel.display.MemberView" relationship="CREATE">
+      <point x="-124.5" y="0.0" />
+      <point x="172.0" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.plants.Plant" target="com.company.environmentmodel.environment.member.Eatable" relationship="REALIZATION">
+      <point x="0.0" y="-85.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.Input" target="com.company.environmentmodel.environment.Tuple" relationship="CREATE">
+      <point x="198.5" y="0.0" />
+      <point x="933.0" y="-416.0" />
+      <point x="933.0" y="-76.0" />
+      <point x="101.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.NeuralNetwork" target="com.company.environmentmodel.neuro.Neuron" relationship="CREATE">
+      <point x="-60.0" y="-162.0" />
+      <point x="1506.0" y="528.5" />
+      <point x="-140.5" y="4.5" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.EnvironmentMember" target="com.company.environmentmodel.environment.Environment" relationship="TO_ONE">
+      <point x="-43.5" y="140.0" />
+      <point x="662.5" y="644.0" />
+      <point x="682.0" y="644.0" />
+      <point x="682.0" y="984.0" />
+      <point x="-154.0" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.plants.Carrot" target="com.company.environmentmodel.environment.member.plants.Plant" relationship="GENERALIZATION">
+      <point x="80.5" y="-15.0" />
+      <point x="586.0" y="1629.0" />
+      <point x="586.0" y="1544.0" />
+      <point x="1768.0" y="1544.0" />
+      <point x="-58.0" y="85.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.Environment" target="com.company.environmentmodel.environment.member.animal.carnivore.Rat" relationship="CREATE">
+      <point x="154.0" y="-15.0" />
+      <point x="-144.5" y="-15.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.NeuralNetwork" target="com.company.environmentmodel.neuro.Neuron" relationship="TO_MANY">
+      <point x="101.5" y="-162.0" />
+      <point x="1667.5" y="322.0" />
+      <point x="1926.0" y="322.0" />
+      <point x="0.0" y="-173.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.BrainFactory" target="com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain" relationship="CREATE">
+      <point x="-60.0" y="-85.0" />
+      <point x="-60.0" y="39.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Swish" target="com.company.environmentmodel.neuro.ActivationFunction" relationship="REALIZATION">
+      <point x="-92.5" y="0.0" />
+      <point x="2036.0" y="724.0" />
+      <point x="2036.0" y="1084.0" />
+      <point x="92.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.Wolf" target="com.company.environmentmodel.environment.member.animal.carnivore.Carnivore" relationship="GENERALIZATION">
+      <point x="144.5" y="-56.5" />
+      <point x="1064.0" y="1287.5" />
+      <point x="1064.0" y="484.0" />
+      <point x="-89.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.Main" target="com.company.environmentmodel.MainWindowController" relationship="CREATE">
+      <point x="74.5" y="0.0" />
+      <point x="-107.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.NeuralNetwork" target="com.company.environmentmodel.neuro.ActivationFunction" relationship="TO_ONE">
+      <point x="0.0" y="-162.0" />
+      <point x="1566.0" y="1142.0" />
+      <point x="1926.0" y="1142.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.Animal" target="com.company.environmentmodel.environment.member.animal.brain.Input" relationship="CREATE">
+      <point x="-144.5" y="-15.0" />
+      <point x="933.0" y="-431.0" />
+      <point x="933.0" y="-609.0" />
+      <point x="706.0" y="-609.0" />
+      <point x="0.0" y="-128.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain" target="com.company.environmentmodel.environment.member.animal.brain.Input" relationship="CREATE">
+      <point x="0.0" y="-39.0" />
+      <point x="-14.0" y="1424.0" />
+      <point x="384.0" y="1424.0" />
+      <point x="384.0" y="-609.0" />
+      <point x="706.0" y="-609.0" />
+      <point x="0.0" y="-128.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.Rabbit" target="com.company.environmentmodel.environment.member.animal.herbivore.Herbivore" relationship="GENERALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="326.0" y="1272.0" />
+      <point x="970.5" y="1272.0" />
+      <point x="970.5" y="1313.0" />
+      <point x="-90.0" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.EnvironmentMember" target="com.company.environmentmodel.environment.Tuple" relationship="TO_ONE">
+      <point x="0.0" y="-140.0" />
+      <point x="0.0" y="83.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Neuron" target="com.company.environmentmodel.neuro.Connection" relationship="CREATE">
+      <point x="140.5" y="15.0" />
+      <point x="2336.0" y="539.0" />
+      <point x="110.0" y="129.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.MainWindowController" target="com.company.environmentmodel.display.DisplayUtility" relationship="TO_ONE">
+      <point x="0.0" y="39.0" />
+      <point x="0.0" y="-140.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.display.DisplayUtility" target="com.company.environmentmodel.display.MemberView" relationship="TO_MANY">
+      <point x="-124.5" y="15.0" />
+      <point x="172.0" y="15.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.plants.Cactus" target="com.company.environmentmodel.environment.member.plants.Plant" relationship="GENERALIZATION">
+      <point x="0.0" y="39.0" />
+      <point x="866.0" y="1544.0" />
+      <point x="1768.0" y="1544.0" />
+      <point x="-58.0" y="85.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.Camel" target="com.company.environmentmodel.environment.member.animal.herbivore.Herbivore" relationship="GENERALIZATION">
+      <point x="-127.5" y="62.0" />
+      <point x="1098.5" y="1272.0" />
+      <point x="970.5" y="1272.0" />
+      <point x="970.5" y="1313.0" />
+      <point x="-90.0" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.Input" target="com.company.environmentmodel.environment.member.animal.Animal" relationship="TO_ONE">
+      <point x="198.5" y="-30.0" />
+      <point x="-144.5" y="-30.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.Animal" target="com.company.environmentmodel.environment.member.animal.brain.Input" relationship="TO_ONE">
+      <point x="-144.5" y="15.0" />
+      <point x="198.5" y="15.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.BrainFactory" target="com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain" relationship="TO_ONE">
+      <point x="0.0" y="85.0" />
+      <point x="586.0" y="1896.5" />
+      <point x="-59.0" y="1896.5" />
+      <point x="-45.0" y="39.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Functions" target="com.company.environmentmodel.neuro.Sigmoid" relationship="CREATE">
+      <point x="0.0" y="72.0" />
+      <point x="2406.0" y="1005.0" />
+      <point x="2516.0" y="1005.0" />
+      <point x="2516.0" y="1309.0" />
+      <point x="92.5" y="-15.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Connection" target="com.company.environmentmodel.neuro.Neuron" relationship="TO_ONE">
+      <point x="0.0" y="129.0" />
+      <point x="2226.0" y="322.0" />
+      <point x="1926.0" y="322.0" />
+      <point x="0.0" y="-173.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.Environment" target="com.company.environmentmodel.environment.member.animal.carnivore.Wolf" relationship="CREATE">
+      <point x="-154.0" y="264.5" />
+      <point x="156.0" y="1248.5" />
+      <point x="156.0" y="1344.0" />
+      <point x="144.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Neuron" target="com.company.environmentmodel.neuro.Connection" relationship="TO_MANY">
+      <point x="140.5" y="0.0" />
+      <point x="2321.0" y="524.0" />
+      <point x="95.0" y="129.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain" target="com.company.environmentmodel.environment.member.animal.carnivore.Wolf" relationship="CREATE">
+      <point x="-84.0" y="0.0" />
+      <point x="144.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.Environment" target="com.company.environmentmodel.environment.member.animal.herbivore.Camel" relationship="CREATE">
+      <point x="154.0" y="200.0" />
+      <point x="-144.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.Brain" target="com.company.environmentmodel.neuro.NeuralNetwork" relationship="CREATE">
+      <point x="-84.0" y="11.5" />
+      <point x="1464.5" y="435.5" />
+      <point x="-101.5" y="-162.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.Animal" target="com.company.environmentmodel.environment.Tuple" relationship="CREATE">
+      <point x="-144.5" y="0.0" />
+      <point x="933.0" y="-416.0" />
+      <point x="933.0" y="-76.0" />
+      <point x="101.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.Herbivore" target="com.company.environmentmodel.environment.member.animal.Animal" relationship="GENERALIZATION">
+      <point x="90.0" y="0.0" />
+      <point x="1388.0" y="1313.0" />
+      <point x="1388.0" y="420.5" />
+      <point x="1057.0" y="420.5" />
+      <point x="1057.0" y="148.0" />
+      <point x="1106.0" y="148.0" />
+      <point x="0.0" y="228.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.Carnivore" target="com.company.environmentmodel.environment.member.animal.Animal" relationship="GENERALIZATION">
+      <point x="-89.5" y="-22.5" />
+      <point x="1057.0" y="461.5" />
+      <point x="1057.0" y="148.0" />
+      <point x="1106.0" y="148.0" />
+      <point x="0.0" y="228.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.Animal" target="com.company.environmentmodel.environment.Direction" relationship="TO_ONE">
+      <point x="144.5" y="-15.0" />
+      <point x="1670.5" y="-431.0" />
+      <point x="0.0" y="-83.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.Environment" target="com.company.environmentmodel.environment.member.animal.carnivore.Cat" relationship="CREATE">
+      <point x="15.0" y="-272.0" />
+      <point x="15.0" y="62.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.Animal" target="com.company.environmentmodel.environment.member.animal.brain.Action" relationship="TO_MANY">
+      <point x="144.5" y="154.0" />
+      <point x="1434.5" y="-262.0" />
+      <point x="0.0" y="-84.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.MainWindowController" target="com.company.environmentmodel.environment.Environment" relationship="CREATE">
+      <point x="107.5" y="-15.0" />
+      <point x="866.0" y="629.0" />
+      <point x="0.0" y="-272.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain" target="com.company.environmentmodel.environment.member.plants.Carrot" relationship="CREATE">
+      <point x="-15.0" y="39.0" />
+      <point x="571.0" y="1404.0" />
+      <point x="601.0" y="1404.0" />
+      <point x="601.0" y="1644.0" />
+      <point x="80.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.BrainFactory" target="com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain" relationship="TO_ONE">
+      <point x="-45.0" y="-85.0" />
+      <point x="-45.0" y="39.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.display.MemberView" target="com.company.environmentmodel.environment.member.EnvironmentMember" relationship="TO_ONE">
+      <point x="0.0" y="-140.0" />
+      <point x="166.0" y="127.0" />
+      <point x="402.0" y="127.0" />
+      <point x="402.0" y="204.0" />
+      <point x="-120.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain" target="com.company.environmentmodel.environment.member.animal.brain.Input" relationship="CREATE">
+      <point x="0.0" y="39.0" />
+      <point x="586.0" y="1424.0" />
+      <point x="384.0" y="1424.0" />
+      <point x="384.0" y="-609.0" />
+      <point x="706.0" y="-609.0" />
+      <point x="0.0" y="-128.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Functions" target="com.company.environmentmodel.neuro.Swish" relationship="CREATE">
+      <point x="0.0" y="-72.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.Environment" target="com.company.environmentmodel.environment.member.animal.herbivore.Rabbit" relationship="CREATE">
+      <point x="-154.0" y="249.5" />
+      <point x="487.0" y="1233.5" />
+      <point x="487.0" y="1504.0" />
+      <point x="144.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.Environment" target="com.company.environmentmodel.environment.member.plants.Cactus" relationship="CREATE">
+      <point x="0.0" y="272.0" />
+      <point x="0.0" y="-39.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.Brain" target="com.company.environmentmodel.neuro.NeuralNetwork" relationship="TO_ONE">
+      <point x="-75.0" y="73.0" />
+      <point x="-75.0" y="-162.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.BrainFactory" target="com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain" relationship="CREATE">
+      <point x="-104.0" y="0.0" />
+      <point x="1.0" y="1764.0" />
+      <point x="15.0" y="39.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain" target="com.company.environmentmodel.neuro.MlDataSet" relationship="CREATE">
+      <point x="-15.0" y="-39.0" />
+      <point x="-29.0" y="1445.0" />
+      <point x="-115.5" y="1445.0" />
+      <point x="-115.5" y="1504.0" />
+      <point x="125.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.display.DisplayUtility" target="com.company.environmentmodel.environment.Environment" relationship="TO_ONE">
+      <point x="124.5" y="0.0" />
+      <point x="-154.0" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.Rat" target="com.company.environmentmodel.environment.member.animal.carnivore.Carnivore" relationship="GENERALIZATION">
+      <point x="-144.5" y="0.0" />
+      <point x="1064.0" y="984.0" />
+      <point x="1064.0" y="484.0" />
+      <point x="-89.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.Animal" target="com.company.environmentmodel.environment.member.EnvironmentMember" relationship="GENERALIZATION">
+      <point x="-144.5" y="150.5" />
+      <point x="880.0" y="-265.5" />
+      <point x="880.0" y="204.0" />
+      <point x="120.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.LeakyReLu" target="com.company.environmentmodel.neuro.ActivationFunction" relationship="REALIZATION">
+      <point x="-92.5" y="0.0" />
+      <point x="2036.0" y="904.0" />
+      <point x="2036.0" y="1084.0" />
+      <point x="92.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.plants.Plant" target="com.company.environmentmodel.environment.member.EnvironmentMember" relationship="GENERALIZATION">
+      <point x="-77.5" y="0.0" />
+      <point x="120.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Neuron" target="com.company.environmentmodel.neuro.ActivationFunction" relationship="TO_ONE">
+      <point x="-133.0" y="173.0" />
+      <point x="1793.0" y="1142.0" />
+      <point x="1926.0" y="1142.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.MainWindowController" target="com.company.environmentmodel.environment.Environment" relationship="TO_ONE">
+      <point x="107.5" y="0.0" />
+      <point x="682.0" y="644.0" />
+      <point x="682.0" y="984.0" />
+      <point x="-154.0" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.NeuralNetwork" target="com.company.environmentmodel.neuro.Sigmoid" relationship="CREATE">
+      <point x="-15.0" y="-162.0" />
+      <point x="1551.0" y="1005.0" />
+      <point x="2516.0" y="1005.0" />
+      <point x="2516.0" y="1309.0" />
+      <point x="92.5" y="-15.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain" target="com.company.environmentmodel.environment.member.animal.brain.Brain" relationship="GENERALIZATION">
+      <point x="-30.0" y="39.0" />
+      <point x="-44.0" y="1881.5" />
+      <point x="955.5" y="1881.5" />
+      <point x="955.5" y="1464.0" />
+      <point x="1403.0" y="1464.0" />
+      <point x="1403.0" y="420.5" />
+      <point x="-84.0" y="-3.5" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.MlDataSet" target="com.company.environmentmodel.neuro.MlData" relationship="TO_MANY">
+      <point x="0.0" y="85.0" />
+      <point x="0.0" y="-73.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.Environment" target="com.company.environmentmodel.environment.Tuple" relationship="CREATE">
+      <point x="154.0" y="0.0" />
+      <point x="1037.5" y="984.0" />
+      <point x="1037.5" y="126.5" />
+      <point x="933.0" y="126.5" />
+      <point x="933.0" y="-76.0" />
+      <point x="101.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain" target="com.company.environmentmodel.neuro.MlDataSet" relationship="CREATE">
+      <point x="0.0" y="-39.0" />
+      <point x="586.0" y="1218.5" />
+      <point x="-176.0" y="1218.5" />
+      <point x="-176.0" y="1445.0" />
+      <point x="-115.5" y="1445.0" />
+      <point x="-115.5" y="1504.0" />
+      <point x="125.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.TanH" target="com.company.environmentmodel.neuro.ActivationFunction" relationship="REALIZATION">
+      <point x="-92.5" y="0.0" />
+      <point x="92.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.Animal" target="com.company.environmentmodel.environment.member.animal.brain.Brain" relationship="TO_ONE">
+      <point x="15.0" y="228.0" />
+      <point x="1121.0" y="249.0" />
+      <point x="1566.0" y="249.0" />
+      <point x="0.0" y="-73.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.Animal" target="com.company.environmentmodel.environment.member.Eatable" relationship="REALIZATION">
+      <point x="144.5" y="0.0" />
+      <point x="1600.0" y="-416.0" />
+      <point x="1600.0" y="-262.0" />
+      <point x="1826.0" y="-262.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.Functions" target="com.company.environmentmodel.neuro.TanH" relationship="CREATE">
+      <point x="-15.0" y="72.0" />
+      <point x="-15.0" y="-50.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.herbivore.HerbivoreBrain" target="com.company.environmentmodel.environment.member.plants.Carrot" relationship="CREATE">
+      <point x="-15.0" y="39.0" />
+      <point x="-29.0" y="1866.5" />
+      <point x="707.5" y="1866.5" />
+      <point x="707.5" y="1404.0" />
+      <point x="601.0" y="1404.0" />
+      <point x="601.0" y="1644.0" />
+      <point x="80.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.neuro.MlDataSet" target="com.company.environmentmodel.neuro.MlData" relationship="CREATE">
+      <point x="15.0" y="85.0" />
+      <point x="15.0" y="-73.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.carnivore.CarnivoreBrain" target="com.company.environmentmodel.environment.member.animal.herbivore.Rabbit" relationship="CREATE">
+      <point x="-84.0" y="-15.0" />
+      <point x="487.0" y="1329.0" />
+      <point x="487.0" y="1504.0" />
+      <point x="144.5" y="0.0" />
+    </edge>
+    <edge source="com.company.environmentmodel.environment.member.animal.brain.Input" target="com.company.environmentmodel.environment.member.EnvironmentMember" relationship="TO_MANY">
+      <point x="-198.5" y="0.0" />
+      <point x="402.0" y="-416.0" />
+      <point x="402.0" y="204.0" />
+      <point x="-120.5" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Compact" zoom="0.3057244374259771" showDependencies="true" x="1073.7230630165282" y="810.0214359504132" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

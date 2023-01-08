@@ -23,7 +23,7 @@ public class NeuralNetwork implements Cloneable {
     private double learningRate = 0.01;
     private double momentum = 0.81;
     
-    private ActivationFunction activationFunction = new Sigmoid();
+    private ActivationFunction activationFunction;
     private boolean initialized = false;
 
     public NeuralNetwork(int inputSize, int hiddenSize, int outputSize) {

@@ -1,4 +1,4 @@
-package com.company.display;
+package com.company.environmentmodel.display;
 
 import java.util.ArrayList;
 import java.util.List;
